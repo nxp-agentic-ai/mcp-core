@@ -1,0 +1,20 @@
+# Install all sub-packages as editable installs.
+# This registers their entry-points in the Python environment so that
+# mcp_gateway can discover servers dynamically via importlib.metadata.
+-e packages/mcp_shared
+-e packages/mcp_gateway
+-e packages/mcp_knowledge
+
+# Build tools
+build
+# Used by the CI pipeline to publish wheels to the Nexus PyPI repository.
+twine
+
+# Test framework
+pytest
+pytest-asyncio
+pytest-html==4.2.0
+
+# Telemetry
+opentelemetry-distro==0.63b1
+opentelemetry-exporter-otlp==1.42.1

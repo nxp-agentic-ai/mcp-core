@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=81", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nxp-mcp-shared"
+version = "2.0.0"
+description = "Shared infrastructure for MCP monorepo (config, bootstrap, models, action protocol)"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "fastmcp>=4.1.0,<5",
+  "httpx==0.28.1",
+  "jsonschema>=4.25.0,<5",
+  "opentelemetry-api==1.42.1",
+  "opentelemetry-distro==0.63b1",
+  "opentelemetry-exporter-otlp==1.42.1",
+  "pydantic>=2.13.4,<3",
+  "pyyaml>=6.0.3,<7",
+]
+
+[tool.setuptools]
+package-dir = {"nxp.mcp.shared" = "src"}
+
+packages = [
+  "nxp.mcp.shared",
+  "nxp.mcp.shared.action",
+  "nxp.mcp.shared.action.search",
+  "nxp.mcp.shared.bootstrap",
+  "nxp.mcp.shared.config",
+  "nxp.mcp.shared.detect",
+  "nxp.mcp.shared.install",
+  "nxp.mcp.shared.models",
+  "nxp.mcp.shared.rpc",
+]

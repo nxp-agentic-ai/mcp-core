@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=81", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nxp-mcp"
+version = "2.0.0"
+description = "NXP MCP Core: meta-package for nxp-mcp-shared, nxp-mcp-gateway and nxp-mcp-knowledge"
+requires-python = ">=3.11"
+dependencies = [
+  "nxp-mcp-shared==2.0.0",
+  "nxp-mcp-gateway==2.0.0",
+  "nxp-mcp-knowledge==2.0.0"
+]
+
+# ---------------------------------------------------------------------------
+# Each sub-package owns its own pyproject.toml under packages/mcp_<name>/.
+# This root pyproject.toml is a convenience dev-aggregate only.
+# nxp-mcp-shared is a library; the "nxp.mcp.servers" entry-points are
+# declared in packages/mcp_gateway and packages/mcp_knowledge so that each
+# server can be installed independently.
+#
+# The three sub-package wheels are published as assets of the GitHub release
+# v<version> and consumed by s32-ds-ai-support and freemaster-ai-support.
+# ---------------------------------------------------------------------------
+
+[tool.setuptools]
+packages = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
